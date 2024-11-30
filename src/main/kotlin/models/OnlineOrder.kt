@@ -1,4 +1,7 @@
-package ie.setu.models
+package models
 
-class OnlineOrder {
-}
+data class OnlineOrder(
+    var customerName: String,
+    var orderNum: Int, )
+
+

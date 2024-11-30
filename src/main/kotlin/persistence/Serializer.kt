@@ -1,4 +1,4 @@
-package ie.setu.persistence
+package persistence
 
 interface Serializer {
     @Throws(Exception::class)
