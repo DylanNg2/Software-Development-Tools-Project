@@ -100,7 +100,16 @@
     }
 
     fun deleteMovie(){
-
+        listMovies()
+        if (moviesApi.listMovies() > 0.toString()) {
+            val indexToDelete = readNextInt("Enter the index of the movie to delete: ")
+            val movieToDelete = moviesApi.deleteMovie(indexToDelete)
+            if(movieToDelete != null){
+                println("Movie deleted successfully! Deleted movie: ")
+            }else{
+                println("Movie Failed to delete!")
+            }
+        }
     }
 
     fun searchMovie(){
