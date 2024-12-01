@@ -61,7 +61,7 @@
     }while (true)
     }
 
-    fun addMovie(): Int {
+    fun addMovie() {
         val name = readNextLine("Enter movie name: ")
         val showTime = readNextLine("Enter show time: ")
         val availableSeats = readNextInt("Enter number of available seats: ")
@@ -70,13 +70,35 @@
         moviesApi.addMovie(movie)
         println("Movie added successfully!")
     }
+
     fun listMovies(){
-
+        val moviesList = moviesApi.listMovies()
+        if (moviesList == "No orders stored") {
+            println("No movies available.")
+        } else {
+            println(moviesList)
+        }
     }
 
-    fun updateMovie(){
-
+    fun updateMovie() {
+        listMovies()
+        if (moviesApi.listMovies() > 0.toString()) {
+            val indexToUpdate = readNextInt("Enter the index of the movie to update: ")
+            if (moviesApi.isValidIndex(indexToUpdate)) {
+                val movieName = readNextLine("Enter the new name for the movie: ")
+                val showTime = readNextLine("Enter the new showtime: ")
+                val availableSeats = readNextInt("Enter the new number of available seats: ")
+                if (moviesApi.updateMovie(indexToUpdate, Movie(movieName, showTime, availableSeats, false))) {
+                    println("Movie updated successfully!")
+                } else {
+                    println("Movie Failed!")
+                }
+            } else {
+                println("There are no movies for this index")
+            }
+        }
     }
+
     fun deleteMovie(){
 
     }

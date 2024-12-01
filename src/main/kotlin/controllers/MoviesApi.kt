@@ -37,7 +37,7 @@
             return false
         }
 
-        fun searchByDetails(searchString: String): String =
+        fun searchByMovie(searchString: String): String =
             formatListString(
                 movies.filter { movies -> movies.name.contains(searchString, ignoreCase = true)
                 })
@@ -48,6 +48,18 @@
                 movies[index]
             } else null
         }
+
+        fun archiveMovie(indexToArchive: Int): Boolean {
+            if (isValidIndex(indexToArchive)) {
+                val movieToArchive = movies[indexToArchive]
+                if (!movieToArchive.isMovieArchived) {
+                    movieToArchive.isMovieArchived = true
+                    return true
+                }
+            }
+            return false
+        }
+
 
         fun isValidIndex(index: Int): Boolean {
             return isValidListIndex(index = index, movies);
