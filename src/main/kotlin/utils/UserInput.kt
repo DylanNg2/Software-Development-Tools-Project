@@ -1,4 +1,4 @@
-package ie.setu.utils
+package utils
 
 fun readIntNotNull() = readlnOrNull()?.toIntOrNull() ?: -1
 
