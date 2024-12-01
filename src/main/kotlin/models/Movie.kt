@@ -5,8 +5,3 @@ data class Movie(
     var showTime: String,
     var isMovieArchived: Boolean
 )
-
-data class Booking(
-    val customerName: String,
-    val movie: Movie
-)

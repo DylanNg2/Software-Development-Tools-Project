@@ -1,8 +1,7 @@
     package controllers
 
-    import models.Booking
     import persistence.Serializer
-    import models.Movie
+    import models.*
     import utils.*
 
     class MoviesApi (serializerType: Serializer){
@@ -82,6 +81,10 @@
                 bookings.remove(booking)
                 true
             } else false
+        }
+
+        fun sortMoviesByName(): List<Movie> {
+            return movies.sortedBy { it.name }
         }
 
         @Throws(Exception::class)

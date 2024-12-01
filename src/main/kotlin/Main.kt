@@ -26,14 +26,15 @@
        > |   3) Update a movie            |
        > |   4) Delete a movie            |
        > |   5) Search movies             |
+       > |   6) Movie sort by time        |
        > ----------------------------------
        > | BOOKING MENU                   |
-       > |   6) Book a movie              |
-       > |   7) List all bookings         |
-       > |   8) Cancel a booking          |
+       > |   7) Book a movie              |
+       > |   8) List all bookings         |
+       > |   9) Cancel a booking         |
        > ----------------------------------
-       > |   9) Save movies               |
-       > |   10) Load movies              |
+       > |   10) Save movies              |
+       > |   11) Load movies              |
        > ----------------------------------
        > |   0) Exit                      |
        > ---------------------------------- 
@@ -50,11 +51,12 @@
             3-> updateMovie()
             4-> deleteMovie()
             5-> searchMovie()
-            6-> bookMovie()
-            7-> listBookings()
-            8-> cancelBooking()
-            9-> saveMovies()
-            10-> loadMovies()
+            6-> sortMoviesByName()
+            7-> bookMovie()
+            8-> listBookings()
+            9-> cancelBooking()
+            10-> saveMovies()
+            11-> loadMovies()
             0-> exitApp()
             else -> println("Invalid Option, please choose a different option: $option")
         }
@@ -134,6 +136,15 @@
             println("No movies available to book.")
         }
     }
+
+    fun sortMoviesByName() {
+        val sortedMovies = moviesApi.sortMoviesByName()
+        println("Sorted Movies:")
+        sortedMovies.forEach { println(it) }
+
+    }
+
+
     fun listBookings(){
         println(moviesApi.listBookings().toString())
     }
@@ -169,6 +180,8 @@
         println("Exiting...bye")
         exit(0)
     }
+
+
 
 
 
