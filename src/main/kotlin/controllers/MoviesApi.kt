@@ -50,15 +50,14 @@
 
         fun archiveMovie(indexToArchive: Int): Boolean {
             if (isValidIndex(indexToArchive)) {
-                val movieToArchive = movies[indexToArchive]
-                if (!movieToArchive.isMovieArchived) {
-                    movieToArchive.isMovieArchived = true
+                val moviesToArchive = movies[indexToArchive]
+                if (!moviesToArchive.isMovieArchived) {
+                    moviesToArchive.isMovieArchived = true
                     return true
                 }
             }
             return false
         }
-
 
         fun isValidIndex(index: Int): Boolean {
             return isValidListIndex(index = index, movies);
