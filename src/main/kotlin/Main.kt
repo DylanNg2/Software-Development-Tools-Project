@@ -122,7 +122,7 @@
     }
     fun bookMovie() {
         listMovies()
-        if (moviesApi.numberOfOrders() > 0) {
+        if (moviesApi.numberOfMovie() > 0) {
             val indexToBook = readNextInt("Enter the index of the movie to book: ")
             val customerName = readNextLine("Enter your name: ")
             if (moviesApi.bookMovie(customerName, indexToBook)) {

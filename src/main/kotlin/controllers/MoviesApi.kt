@@ -3,7 +3,7 @@
     import models.Booking
     import persistence.Serializer
     import models.Movie
-    import utils.isValidListIndex
+    import utils.*
 
     class MoviesApi (serializerType: Serializer){
         private  var serializer: Serializer = serializerType
@@ -40,7 +40,7 @@
             formatListString(
                 movies.filter { movies -> movies.name.contains(searchString, ignoreCase = true)
                 })
-        fun numberOfOrders() = movies.size
+        fun numberOfMovie() = movies.size
 
         fun findMovie(index: Int): Movie? {
             return if (isValidIndex(index)) {
