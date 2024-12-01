@@ -113,9 +113,31 @@
     }
 
     fun searchMovie(){
-
+        val searchTitle = readNextLine("Enter the title to search for: ")
+        val searchResults = moviesApi.searchByMovie(searchTitle)
+        if (searchResults.isEmpty()) {
+            println("No movies found.")
+        } else {
+            println(searchResults)
+        }
     }
-
+    fun bookMovie() {
+        listMovies()
+        if (moviesApi.numberOfOrders() > 0) {
+            val indexToBook = readNextInt("Enter the index of the movie to book: ")
+            val customerName = readNextLine("Enter your name: ")
+            if (moviesApi.bookMovie(customerName, indexToBook)) {
+                println("Booking successful!")
+            } else {
+                println("Failed to book the movie. Please check seat availability.")
+            }
+        } else {
+            println("No movies available to book.")
+        }
+    }
+    fun listBookings(){
+        println(moviesApi.listBookings().toString())
+    }
     fun saveOrder(){
 
     }
