@@ -62,11 +62,11 @@
     }
 
     fun addMovie() {
-        val name = readNextLine("Enter movie name: ")
-        val showTime = readNextLine("Enter show time: ")
-        val availableSeats = readNextInt("Enter number of available seats: ")
-
-        val movie = Movie(name, showTime, availableSeats)
+        print("Enter movie name: ")
+        val name = readLine()?.trim() ?: ""
+        print("Enter show time (e.g., 8:00): ")
+        val showTime = readLine()?.trim() ?: ""
+        val movie = Movie(name, showTime, false)
         moviesApi.addMovie(movie)
         println("Movie added successfully!")
     }
@@ -87,8 +87,7 @@
             if (moviesApi.isValidIndex(indexToUpdate)) {
                 val movieName = readNextLine("Enter the new name for the movie: ")
                 val showTime = readNextLine("Enter the new showtime: ")
-                val availableSeats = readNextInt("Enter the new number of available seats: ")
-                if (moviesApi.updateMovie(indexToUpdate, Movie(movieName, showTime, availableSeats, false))) {
+                if (moviesApi.updateMovie(indexToUpdate, Movie(movieName, showTime,false))) {
                     println("Movie updated successfully!")
                 } else {
                     println("Movie Failed!")

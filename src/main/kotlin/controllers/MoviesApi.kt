@@ -31,7 +31,6 @@
             if ((foundMovie != null) && ( movies != null)) {
                 foundMovie.name = movies.name
                 foundMovie.showTime = movies.showTime
-                foundMovie.availableSeats =movies.availableSeats
                 return true
             }
             return false
@@ -66,10 +65,9 @@
         }
         fun bookMovie(customerName: String, movieIndex: Int): Boolean {
             val movie = findMovie(movieIndex)
-            if (movie != null && movie.availableSeats > 0) {
+            if (movie != null) {
                 val booking = Booking(customerName, movie)
                 bookings.add(booking)
-                movie.availableSeats--
                 return true
             }
             return false
@@ -83,7 +81,6 @@
             val booking = bookings.find { it.customerName == customerName }
             return if (booking != null) {
                 bookings.remove(booking)
-                booking.movie.availableSeats++
                 true
             } else false
         }
