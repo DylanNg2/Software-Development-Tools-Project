@@ -138,12 +138,32 @@
     fun listBookings(){
         println(moviesApi.listBookings().toString())
     }
-    fun saveOrder(){
 
+    fun cancelBooking() {
+        val customerName = readNextLine("Enter the name for the booking to cancel: ")
+        if (moviesApi.deleteBooking(customerName)) {
+            println("Booking cancelled successfully.")
+        } else {
+            println("Failed to cancel the booking.")
+        }
     }
 
-    fun loadOrder(){
+    fun saveMovies(){
+        try {
+            moviesApi.store()
+            println("Movies saved successfully.")
+        } catch (e: Exception) {
+            println("Failed to save movies: ${e.message}")
+        }
+    }
 
+    fun loadMovies(){
+        try {
+            moviesApi.load()
+            println("Movies loaded successfully.")
+        } catch (e: Exception) {
+            println("Failed to load movies: ${e.message}")
+        }
     }
 
     fun exitApp() {
